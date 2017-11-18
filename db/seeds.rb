@@ -14,4 +14,7 @@ Item.all.each do |item|
   counter += 1
 end
 
-User.create(email: "art@vandelay.com", password: "tippytoe")
+george = User.create(email: "art@vandelay.com", password: "tippytoe")
+cart = Cart.create(user: george)
+cart.line_items.create(quantity: 3, item: Item.first)
+cart.line_items.create(quantity: 4, item: Item.second)
