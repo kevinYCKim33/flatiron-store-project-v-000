@@ -4,10 +4,22 @@ class CartsController < ApplicationController
 
   def show
     @user = current_user
+    @cart = Cart.find_by(id: params[:id])
   end
 
+
+
   def checkout
-    @current_cart = @user.current_cart
+    @current_cart = current_user.current_cart
+    @current_cart.line_items.each do |line_item|
+      item = Item.find_by(id: line_item.item_id)
+      item.inventory -= line_item.quantity
+      item.save 
+    end
+    @current_cart.status = "submitted"
+    @current_cart.save
+    current_user.current_cart = nil
+    current_user.save
     redirect_to cart_path(@current_cart)
   end
 

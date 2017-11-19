@@ -22,22 +22,7 @@ class Cart < ActiveRecord::Base
     line_item
   end
 
-  # def add_item(added_item_id)
-  #   if self.item_ids.include?(added_item_id)
-  #     line_items.each do |line_item|
-  #       if line_item.item_id == added_item_id
-  #         line_item.quantity += 1
-  #         return line_item
-  #       end
-  #     end
-  #   else
-  #     item = line_items.build(item_id: added_item_id)
-  #   end
-  #
-  # end
-
   def show
-    binding.pry
     @user = current_user
   end
 
