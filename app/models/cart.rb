@@ -36,4 +36,9 @@ class Cart < ActiveRecord::Base
   #
   # end
 
+  def show
+    binding.pry
+    @user = current_user
+  end
+
 end

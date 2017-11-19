@@ -15,3 +15,8 @@ Item.all.each do |item|
 end
 
 george = User.create(email: "art@vandelay.com", password: "tippytoe")
+
+# db:drop these last three for model tests to pass
+cart = Cart.create(user: george)
+cart.line_items.create(quantity: 3, item: Item.first)
+cart.line_items.create(quantity: 4, item: Item.second)
